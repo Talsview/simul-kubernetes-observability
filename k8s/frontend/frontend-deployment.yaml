@@ -22,7 +22,7 @@ spec:
       terminationGracePeriodSeconds: 20
       containers:
         - name: frontend
-          image: simul-frontend:etapa4
+          image: simul-frontend:etapa4-fix1
           imagePullPolicy: IfNotPresent
           ports:
             - name: http

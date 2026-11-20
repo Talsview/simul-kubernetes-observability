@@ -1,0 +1,21 @@
+# Artefatos de build gerados localmente
+target/
+*.class
+*.log
+
+# Controle de versao e editores
+.git
+.gitignore
+.gitattributes
+.vscode/
+.idea/
+*.iml
+
+# Segredos locais
+.env
+.env.*
+application-secrets.properties
+
+# Importante: mvnw e .mvn/ NAO sao ignorados - o Dockerfile precisa deles.
+Dockerfile
+.dockerignore

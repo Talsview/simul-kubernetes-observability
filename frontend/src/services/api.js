@@ -1,10 +1,16 @@
-const configuredApiUrl = import.meta.env.VITE_API_URL?.trim()
+const rawApiUrl = import.meta.env.VITE_API_URL
+const configuredApiUrl = rawApiUrl?.trim()
 
 // No desenvolvimento local, a API usa o proxy do Vite (/api -> localhost:8080).
 // Em produção, VITE_API_URL deve apontar para a URL pública do back-end.
+//
+// Valor vazio EXPLÍCITO (VITE_API_URL="") significa "mesma origem": as
+// chamadas vão para /api no próprio host do front-end e um proxy reverso
+// (ex.: Nginx no Kubernetes) as encaminha ao back-end.
+// Variável AUSENTE em produção continua sendo erro de configuração.
 const API_URL = (configuredApiUrl || '').replace(/\/+$/, '')
 
-if (!API_URL && !import.meta.env.DEV) {
+if (rawApiUrl === undefined && !import.meta.env.DEV) {
   throw new Error(
     'API não configurada. Defina VITE_API_URL no ambiente de build do front-end.',
   )

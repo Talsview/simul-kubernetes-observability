@@ -5,9 +5,6 @@ target/
 *.war
 *.ear
 *.log
-.mvn/
-mvnw
-mvnw.cmd
 *.iml
 .classpath
 .project
@@ -55,3 +52,15 @@ desktop.ini
 *.tmp
 *.temp
 logs/
+
+### === Kubernetes: Secrets reais NUNCA sao versionados === ###
+# Somente README.md, .gitkeep e modelos *.example.* ficam no Git.
+k8s/secrets/*
+!k8s/secrets/README.md
+!k8s/secrets/.gitkeep
+!k8s/secrets/*.example.yaml
+!k8s/secrets/*.example.yml
+*.secret.yaml
+*.secret.yml
+*-secret.local.yaml
+vapid-keys.json
